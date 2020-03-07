@@ -1,24 +1,60 @@
+
+
 <!DOCTYPE html>
-
-
+{% load static %}
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>VIKI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="styles/style.css" type="text/css"/> -->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="java_scripts/script.js"></script> <!--Поключение таймера-->
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <script>
+      $(document).ready(function() {
+        $('#middle_window').show();
+        $('#middle_window_living_room').hide();
+        $('#middle_window_bedroom').hide();
+        $('#middle_window_children_room').hide();
+        $(document).ready(function(){
+            $('#contentSlider').html('ok');
+             $( "#slider" ).slider({
+              value : 0,//Значение, которое будет выставлено слайдеру при загрузке
+              min : 0,//Минимально возможное значение на ползунке
+              max : 1024,//Максимально возможное значение на ползунке
+              step : 1,//Шаг, с которым будет двигаться ползунок
+              create: function( event, ui ) {
+                val = $( "#slider" ).slider("value");//При создании слайдера, получаем его значение в перемен. val
+                $( "#contentSlider" ).html( val );//Заполняем этим значением элемент с id contentSlider
+              },
+                  slide: function( event, ui ) {
+              $( "#contentSlider" ).html( ui.value );//При изменении значения ползунка заполняем элемент с id contentSlider
+
+                  }
+              });
+      });
+    });
+    </script>
 
 
     <script>
 var counter = 0;
+var counter1 = 0;
 function timer() {
     var str;
     counter++;
+    counter1++;
     $('#times').html(counter);
+    $('#times1').html(counter1);
     setTimeout("timer()", 1000);
-    if (counter == 3) {
+    if (counter1 > 30){
+      counter1 = 0;
+      $('#middle_window').show();
+      $('#middle_window_living_room').hide();
+      $('#middle_window_bedroom').hide();
+      $('#middle_window_children_room').hide();
+    }
+    if (counter == 4) {
         counter = 0;
         var data;
         //data = {"button1":"OK", };
@@ -44,19 +80,92 @@ function timer() {
     }
 }
     </script>
-
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 
 <body onload="timer()">
 <span id="otvet">....</span>
-
+<span id="times">0</span> </br>
+<span id="times1">0</span> </br>
 
 <div id="mainDIV">
-    <span id="times">0</span> </br>
+<!-- ---------------------------------------------------------------------------------------------->
+  <div id = "top_window">
+    <div id = ryad_1>
+      <div id = "button_top_1">
+        <span>ГОСТИННАЯ</span>
+      </div>
+      <div id = "button_top_2">
+        <span>СПАЛЬНЯ</span>
+      </div>
+      <div id = "button_top_3">
+        <span>ДЕТСКАЯ</span>
+      </div>
+    </div>
+    <div id = ryad_2>
+      <div id = "button_top_4">
+        <span>КОРИДОР</span>
+      </div>
+      <div id = "button_top_5">
+        <span>КУХНЯ</span>
+      </div>
+      <div id = "button_top_6">
+        <span>ВАННАЯ</span>
+      </div>
+    </div>
+  </div>
 
-    <script type="text/javascript" src="java_scripts/scriptEnter.js"></script> <!--Поключение проверка логина и пароля-->
+
+<!-- ---------------------------------------------------------------------------------------------->
+  <div id = "middle_window">
+    <h1> ДОБРО ПОЖАЛОВАТЬ </h1>
+  </div>
+
+  <div id = "middle_window_living_room">
+    <h1> ГОСТИННАЯ </h1>
+    <span id="contentSlider"></span>
+    <div id="slider"></div>
+  </div>
+  <div id = "middle_window_bedroom">
+    <h1> СПАЛЬНЯ </h1>
+  </div>
+  <div id = "middle_window_children_room">
+    <h1> ДЕТСКАЯ </h1>
+  </div>
+<!-- ---------------------------------------------------------------------------------------------->
+  <div id = "down_window">
+
+  </div>
 
 
 </div>
+
+<script>
+  $("#mainDIV").click (function(){
+    counter1 = 0;
+  })
+  $("#button_top_1").click (function(){
+    $('#middle_window').hide();
+    $('#middle_window_living_room').show();
+    $('#middle_window_bedroom').hide();
+    $('#middle_window_children_room').hide();
+
+
+  });
+  $("#button_top_2").click (function(){
+    $('#middle_window').hide();
+    $('#middle_window_living_room').hide();
+    $('#middle_window_bedroom').show();
+    $('#middle_window_children_room').hide();
+  });
+  $("#button_top_3").click (function(){
+    $('#middle_window').hide();
+    $('#middle_window_living_room').hide();
+    $('#middle_window_bedroom').hide();
+    $('#middle_window_children_room').show();
+  });
+</script>
+
+
 </body>
 </html>

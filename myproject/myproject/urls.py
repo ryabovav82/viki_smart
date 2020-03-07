@@ -20,4 +20,6 @@ from mainapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index, name='index'),
+    path('slide/', views.slide, name='slide'),
+    path('vikidb/', views.vikidb, name='vikidb'),
 ]

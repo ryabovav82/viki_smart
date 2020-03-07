@@ -1,0 +1,53 @@
+
+#mainDIV {
+  background-color: #282828;
+  color: white;
+  width: 1080px;
+  height: 1920px;
+  margin:0 auto;
+  text-decoration-color: BLUE;
+}
+#ryad_1, #ryad_2 {
+  width: 1080px;
+  height: 205px;
+}
+#button_top_1, #button_top_2, #button_top_3, #button_top_4, #button_top_5, #button_top_6{
+  box-sizing: border-box;
+  background-color: #2d2d2d;
+  float: left;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-style: solid;
+  border-top-color: grey;
+  border-right-color: grey;
+  border-left-color: #c8c8c8;
+
+  width: 353px;
+  height: 200px;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 80px;
+  font-family: "Comic Sans MS";
+}
+
+#middle_window, #middle_window_living_room, #middle_window_bedroom, #middle_window_children_room {
+  font-family: "Comic Sans MS";
+  margin-left: 5px;
+  margin-top: 10px;
+  width: 1065px;
+  height: 1300px;
+  border-style: solid;
+  background-color: #2d2d2d;
+  border-top-color: grey;
+  border-right-color: grey;
+}
+#down_window {
+  margin-left: 5px;
+  margin-top: 10px;
+  width: 1065px;
+  height: 170px;
+  border-style: solid;
+  background-color: #2d2d2d;
+  border-top-color: grey;
+  border-right-color: grey;
+}
