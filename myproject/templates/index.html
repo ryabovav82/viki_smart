@@ -6,6 +6,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>VIKI</title>
+
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -19,6 +21,7 @@
         $(document).ready(function(){
             $('#contentSlider').html('ok');
              $( "#slider" ).slider({
+              animate: "slow",
               value : 0,//Значение, которое будет выставлено слайдеру при загрузке
               min : 0,//Минимально возможное значение на ползунке
               max : 1024,//Максимально возможное значение на ползунке
@@ -28,7 +31,8 @@
                 $( "#contentSlider" ).html( val );//Заполняем этим значением элемент с id contentSlider
               },
                   slide: function( event, ui ) {
-              $( "#contentSlider" ).html( ui.value );//При изменении значения ползунка заполняем элемент с id contentSlider
+
+                    $( "#contentSlider" ).html( ui.value );//При изменении значения ползунка заполняем элемент с id contentSlider
 
                   }
               });
