@@ -9,3 +9,5 @@ def slide(request):
     return render(request, "slide.html")
 def vikidb(request):
     return HttpResponse("Ok")
+def slider2(request):
+    return render(request, "slider2.html")

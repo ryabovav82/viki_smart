@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index, name='index'),
     path('slide/', views.slide, name='slide'),
+    path('slider2/', views.slider2, name='slider2'),
     path('vikidb/', views.vikidb, name='vikidb'),
 ]
