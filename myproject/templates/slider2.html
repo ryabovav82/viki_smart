@@ -1,63 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>jQuery UI Slider）</title>
-  <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="jqueryui/style.css">
-  <style>
-  #eq span {
-    height:120px; float:left; margin:15px
-  }
-  </style>
-  <script>
-  $(function() {
-    $( "#master" ).slider({
-      value: 60,
-      orientation: "horizontal",
-      range: "min",
-      animate: true
-    });
-
-    $( "#eq > span" ).each(function() {
-
-      var value = parseInt( $( this ).text(), 10 );
-      $( this ).empty().slider({
-        value: value,
-        range: "min",
-        animate: true,
-        orientation: "vertical"
-      });
-    });
-  });
-  </script>
+<meta charset="utf-8" />
+<title>Colorpicker demo</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </head>
 <body>
 
-<p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
-  <span class="ui-icon ui-icon-volume-on" style="float:left; margin:-2px 5px 0 0;"></span>
-  first slider
-</p>
+<canvas width="200" height="106" id="canvas_picker"></canvas>
 
-<div id="master" style="width:260px; margin:15px;"></div>
 
-<p class="ui-state-default ui-corner-all" style="padding:4px;margin-top:4em;">
-  <span class="ui-icon ui-icon-signal" style="float:left; margin:-2px 5px 0 0;"></span>
-  second slider
-</p>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas_picker').getContext('2d');
 
-<div id="eq">
-  <span>88</span>
-  <span>77</span>
-  <span>55</span>
-  <span>33</span>
-  <span>40</span>
-  <span>45</span>
-  <span>70</span>
+// create an image object and get it’s source
+var img = new Image();
+img.src = '../static/images/colorpicker.jpg';
+
+// copy the image to the canvas
+$(img).load(function(){
+  canvas.drawImage(img,0,0);
+});
+
+
+$('#canvas_picker').click(function(event){
+  // getting user coordinates
+  var x = event.pageX - this.offsetLeft;
+  var y = event.pageY - this.offsetTop;
+  // getting image data and RGB values
+  var img_data = canvas.getImageData(x, y, 1, 1).data;
+  var R = img_data[0];
+  var G = img_data[1];
+  var B = img_data[2];
+  var rgb = R + ',' + G + ',' + B;
+  // convert RGB to HEX
+  // making the color the value of the input
+  $("#rgb").html(rgb);
+  document.getElementById('color_box').style.background = "rgb(" + R + "," + G + "," + B + ")";
+  //$('#hex input').val('#' + hex);
+});
+</script>
+<span id="rgb">RGB:</span>
+<div id = "color_box" style = "background: rgb(255,0,0);; width: 200px; height: 50px;">
+
 </div>
-
-
 </body>
 </html>
